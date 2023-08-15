@@ -1,5 +1,6 @@
 package ar.com.g5one.conversormoneda.view;
 
+import ar.com.g5one.conversormoneda.controller.MonedaController;
 import ar.com.g5one.conversormoneda.view.resources.ValidadorDeCampos;
 import java.awt.Color;
 
@@ -9,13 +10,15 @@ import java.awt.Color;
  */
 public class JPanel_Moneda extends javax.swing.JPanel {
 
+    private MonedaController controlador;
     private JPanelAplication panelMenu;
     ValidadorDeCampos validadorDeCampos;
 
-    public JPanel_Moneda(JPanelAplication panelMenu) {
+    public JPanel_Moneda(JPanelAplication panelMenu, MonedaController monedaController) {
 
         this.validadorDeCampos = new ValidadorDeCampos();
         this.panelMenu = panelMenu;
+        this.controlador=monedaController;
         initComponents();
         validadarCampos();
 
@@ -37,6 +40,8 @@ public class JPanel_Moneda extends javax.swing.JPanel {
         jTf_monto = new javax.swing.JTextField();
         jbt_convertir = new javax.swing.JButton();
         jButton_salir = new javax.swing.JButton();
+        jComboBox_opcion = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 153, 255));
 
@@ -62,50 +67,72 @@ public class JPanel_Moneda extends javax.swing.JPanel {
             }
         });
 
+        jComboBox_opcion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pesos/Dólar", "Pesos/Euros", "Pesos/Libras Esterlinas", "Pesos/Jen Japonés", "Pesos/Won Sul-Coreano", "Dólar/Pesos", "Euros/Pesos", "Libras Esterlinas/Pesos", "Jen Japónes/Pesos", "Won Sul-Coreano/Pesos", " " }));
+        jComboBox_opcion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox_opcionActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("Tipo de Cambio");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTf_cotizaciondia, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jbt_convertir)
-                            .addComponent(jTf_monto, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(28, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton_salir)
                 .addGap(23, 23, 23))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jbt_convertir)
+                        .addGap(48, 48, 48))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTf_monto, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
+                            .addComponent(jTf_cotizaciondia, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBox_opcion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTf_cotizaciondia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
+                .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTf_monto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43)
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jComboBox_opcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTf_cotizaciondia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addComponent(jbt_convertir)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                 .addComponent(jButton_salir)
                 .addGap(76, 76, 76))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbt_convertirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbt_convertirActionPerformed
+        try{
+            Double monto = Double.parseDouble(jTf_monto.getText());
+            int opcion = jComboBox_opcion.getSelectedIndex();
+        this.controlador.Convertir(monto, opcion);
+        }catch (NumberFormatException e) {
+        System.out.println("Error: El monto ingresado no es válido");
+    }
         // TODO add your handling code here:
     }//GEN-LAST:event_jbt_convertirActionPerformed
 
@@ -114,11 +141,17 @@ public class JPanel_Moneda extends javax.swing.JPanel {
         this.panelMenu.limpiarPanelContenido();        // TODO add your handling code here:
     }//GEN-LAST:event_jButton_salirActionPerformed
 
+    private void jComboBox_opcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_opcionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox_opcionActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_salir;
+    private javax.swing.JComboBox<String> jComboBox_opcion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField jTf_cotizaciondia;
     private javax.swing.JTextField jTf_monto;
     private javax.swing.JButton jbt_convertir;

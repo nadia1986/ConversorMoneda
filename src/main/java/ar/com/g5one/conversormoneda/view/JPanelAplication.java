@@ -4,6 +4,8 @@
  */
 package ar.com.g5one.conversormoneda.view;
 
+import ar.com.g5one.conversormoneda.controller.MonedaController;
+
 /**
  *
  * @author nadia
@@ -135,7 +137,9 @@ public class JPanelAplication extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton_temperaturaActionPerformed
 
     private void jButton_monedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_monedaActionPerformed
-       JPanel_Moneda panelMoneda = new JPanel_Moneda(this);
+       
+        MonedaController controlador=new MonedaController();
+        JPanel_Moneda panelMoneda = new JPanel_Moneda(this,controlador);
         panelMoneda.setSize(313, 356);
         this.jPanel_contenido.removeAll();
         this.jPanel_contenido.add(panelMoneda);
