@@ -18,9 +18,9 @@ public class JPanel_Moneda extends javax.swing.JPanel {
 
         this.validadorDeCampos = new ValidadorDeCampos();
         this.panelMenu = panelMenu;
-        this.controlador=monedaController;
+        this.controlador = monedaController;
         initComponents();
-        validadarCampos();
+       // validadarCampos();
 
         setupBotones();
     }
@@ -34,8 +34,6 @@ public class JPanel_Moneda extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTf_cotizaciondia = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jTf_monto = new javax.swing.JTextField();
         jbt_convertir = new javax.swing.JButton();
@@ -43,16 +41,12 @@ public class JPanel_Moneda extends javax.swing.JPanel {
         jComboBox_opcion = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(204, 153, 255));
+        setBackground(new java.awt.Color(153, 153, 255));
 
-        jTf_cotizaciondia.setText("jTextField1");
-
-        jLabel1.setText("Cotización día:");
-
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setText("Monto a convertir:");
 
-        jTf_monto.setText("jTextField1");
-
+        jbt_convertir.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jbt_convertir.setText("CONVERTIR");
         jbt_convertir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -60,6 +54,7 @@ public class JPanel_Moneda extends javax.swing.JPanel {
             }
         });
 
+        jButton_salir.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton_salir.setText("SALIR");
         jButton_salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -67,6 +62,7 @@ public class JPanel_Moneda extends javax.swing.JPanel {
             }
         });
 
+        jComboBox_opcion.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jComboBox_opcion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pesos/Dólar", "Pesos/Euros", "Pesos/Libras Esterlinas", "Pesos/Jen Japonés", "Pesos/Won Sul-Coreano", "Dólar/Pesos", "Euros/Pesos", "Libras Esterlinas/Pesos", "Jen Japónes/Pesos", "Won Sul-Coreano/Pesos", " " }));
         jComboBox_opcion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,65 +70,59 @@ public class JPanel_Moneda extends javax.swing.JPanel {
             }
         });
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel4.setText("Tipo de Cambio");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton_salir)
-                .addGap(23, 23, 23))
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(15, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jbt_convertir)
-                        .addGap(48, 48, 48))
+                    .addComponent(jbt_convertir)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 2, Short.MAX_VALUE)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTf_monto, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
-                            .addComponent(jTf_cotizaciondia, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox_opcion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(26, Short.MAX_VALUE))
+                            .addComponent(jTf_monto, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jComboBox_opcion, javax.swing.GroupLayout.Alignment.TRAILING, 0, 167, Short.MAX_VALUE)))
+                    .addComponent(jButton_salir))
+                .addGap(37, 37, 37))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addGap(57, 57, 57)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTf_monto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
+                    .addComponent(jTf_monto, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jComboBox_opcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(39, 39, 39)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTf_cotizaciondia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(jComboBox_opcion, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33)
                 .addComponent(jbt_convertir)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addGap(45, 45, 45)
                 .addComponent(jButton_salir)
-                .addGap(76, 76, 76))
+                .addContainerGap(95, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbt_convertirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbt_convertirActionPerformed
-        try{
+        
             Double monto = Double.parseDouble(jTf_monto.getText());
             int opcion = jComboBox_opcion.getSelectedIndex();
-        this.controlador.Convertir(monto, opcion);
-        }catch (NumberFormatException e) {
-        System.out.println("Error: El monto ingresado no es válido");
-    }
+            this.controlador.Convertir(monto, opcion);
+        
+            
+      
         // TODO add your handling code here:
     }//GEN-LAST:event_jbt_convertirActionPerformed
 
@@ -149,22 +139,22 @@ public class JPanel_Moneda extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_salir;
     private javax.swing.JComboBox<String> jComboBox_opcion;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField jTf_cotizaciondia;
     private javax.swing.JTextField jTf_monto;
     private javax.swing.JButton jbt_convertir;
     // End of variables declaration//GEN-END:variables
 
     private void validadarCampos() {
-        this.validadorDeCampos.validarSoloNumero(jTf_cotizaciondia);
-        this.validadorDeCampos.validarSoloNumero(jTf_monto);
-        //this.validadorDeCampos.LimitarCaracteres(jtx_buyerDni, 8);
+       // this.validadorDeCampos.validarSoloNumero(jTf_cotizaciondia);
+       // this.validadorDeCampos.validarSoloNumero(jTf_monto);
+       
     }
 
     private void setupBotones() {
         this.validadorDeCampos.habilitarBoton(true, jButton_salir, new Color(176, 128, 118), Color.WHITE, Color.GRAY, Color.BLACK);
     }
+
+
 
 }

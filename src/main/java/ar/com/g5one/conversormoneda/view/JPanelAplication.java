@@ -5,6 +5,7 @@
 package ar.com.g5one.conversormoneda.view;
 
 import ar.com.g5one.conversormoneda.controller.MonedaController;
+import ar.com.g5one.conversormoneda.controller.TemperaturaController;
 
 /**
  *
@@ -35,8 +36,9 @@ public class JPanelAplication extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
-        jPanel_button.setBackground(new java.awt.Color(51, 0, 51));
+        jPanel_button.setBackground(new java.awt.Color(51, 0, 153));
 
+        jButton_moneda.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton_moneda.setText("CONVERTIR MONEDA");
         jButton_moneda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -44,6 +46,7 @@ public class JPanelAplication extends javax.swing.JPanel {
             }
         });
 
+        jButton_temperatura.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton_temperatura.setText("CONVERTIR  TEMPERATURA");
         jButton_temperatura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,7 +75,7 @@ public class JPanelAplication extends javax.swing.JPanel {
                 .addContainerGap(162, Short.MAX_VALUE))
         );
 
-        jPanel_contenido.setBackground(new java.awt.Color(204, 153, 255));
+        jPanel_contenido.setBackground(new java.awt.Color(204, 204, 255));
 
         javax.swing.GroupLayout jPanel_contenidoLayout = new javax.swing.GroupLayout(jPanel_contenido);
         jPanel_contenido.setLayout(jPanel_contenidoLayout);
@@ -133,13 +136,20 @@ public class JPanelAplication extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton_temperaturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_temperaturaActionPerformed
-        // TODO add your handling code here:
+        TemperaturaController controlador = new TemperaturaController();
+        JPanel_Temperatura panelTemperatura = new JPanel_Temperatura(this, controlador);
+        panelTemperatura.setSize(313, 356);
+        this.jPanel_contenido.removeAll();
+        this.jPanel_contenido.add(panelTemperatura);
+        this.repaint();
+        this.validate();
+        bloquearBotones(false); // TODO add your handling code here:
     }//GEN-LAST:event_jButton_temperaturaActionPerformed
 
     private void jButton_monedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_monedaActionPerformed
-       
-        MonedaController controlador=new MonedaController();
-        JPanel_Moneda panelMoneda = new JPanel_Moneda(this,controlador);
+
+        MonedaController controlador = new MonedaController();
+        JPanel_Moneda panelMoneda = new JPanel_Moneda(this, controlador);
         panelMoneda.setSize(313, 356);
         this.jPanel_contenido.removeAll();
         this.jPanel_contenido.add(panelMoneda);
@@ -158,11 +168,9 @@ public class JPanelAplication extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel_contenido;
     // End of variables declaration//GEN-END:variables
 
-    
     public void bloquearBotones(boolean estado) {
         this.jButton_moneda.setEnabled(estado);
         this.jButton_temperatura.setEnabled(estado);
-       
 
     }
 
@@ -175,6 +183,5 @@ public class JPanelAplication extends javax.swing.JPanel {
     public javax.swing.JPanel getjPanel_contenido() {
         return jPanel_contenido;
     }
-
 
 }

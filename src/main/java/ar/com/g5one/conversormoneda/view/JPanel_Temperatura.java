@@ -4,17 +4,27 @@
  */
 package ar.com.g5one.conversormoneda.view;
 
+import ar.com.g5one.conversormoneda.controller.TemperaturaController;
+import ar.com.g5one.conversormoneda.view.resources.ValidadorDeCampos;
+import java.awt.Color;
+
 /**
  *
  * @author nadia
  */
 public class JPanel_Temperatura extends javax.swing.JPanel {
-
-    /**
-     * Creates new form JPanel_Temperatura
-     */
-    public JPanel_Temperatura() {
+    
+    private final  TemperaturaController controlador;
+     private  final JPanelAplication panelMenu;
+     ValidadorDeCampos validadorDeCampos;
+    
+    public JPanel_Temperatura(JPanelAplication panelMenu, TemperaturaController controladorT) {
+       
+        this.validadorDeCampos = new ValidadorDeCampos();
+        this.panelMenu=panelMenu;
+        this.controlador=controladorT;
         initComponents();
+         setupBotones();
     }
 
     /**
@@ -26,19 +36,102 @@ public class JPanel_Temperatura extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jTf_temperatura = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jComboBox_escalas = new javax.swing.JComboBox<>();
+        jButton_convertir = new javax.swing.JButton();
+        jButton_salir = new javax.swing.JButton();
+
+        setBackground(new java.awt.Color(153, 153, 255));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setText("T°:");
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setText("Escala:");
+
+        jComboBox_escalas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Celcius/Farenheit", "Celcius/Kelvin", "Farenheit/Celcius", "Kelvin/Celcius", "Kelvin/Farenheit" }));
+
+        jButton_convertir.setText("CONVERTIR");
+        jButton_convertir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_convertirActionPerformed(evt);
+            }
+        });
+
+        jButton_salir.setText("SALIR");
+        jButton_salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_salirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jTf_temperatura)
+                            .addComponent(jComboBox_escalas, 0, 227, Short.MAX_VALUE))
+                        .addGap(35, 35, 35))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jButton_convertir)
+                        .addGap(64, 64, 64))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jButton_salir)
+                        .addGap(52, 52, 52))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(56, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTf_temperatura, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBox_escalas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(27, 27, 27)
+                .addComponent(jButton_convertir)
+                .addGap(41, 41, 41)
+                .addComponent(jButton_salir)
+                .addGap(85, 85, 85))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton_convertirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_convertirActionPerformed
+           Double temperatura = Double.parseDouble(jTf_temperatura.getText());
+            int opcion = jComboBox_escalas.getSelectedIndex();
+            this.controlador.Convertir(temperatura, opcion); // TODO add your handling code here:
+    }//GEN-LAST:event_jButton_convertirActionPerformed
+
+    private void jButton_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_salirActionPerformed
+      this.panelMenu.bloquearBotones(true);
+        this.panelMenu.limpiarPanelContenido();   // TODO add your handling code here:
+    }//GEN-LAST:event_jButton_salirActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton_convertir;
+    private javax.swing.JButton jButton_salir;
+    private javax.swing.JComboBox<String> jComboBox_escalas;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JTextField jTf_temperatura;
     // End of variables declaration//GEN-END:variables
+
+     private void setupBotones() {
+        this.validadorDeCampos.habilitarBoton(true, jButton_salir, new Color(176, 128, 118), Color.WHITE, Color.GRAY, Color.BLACK);
+    }
+
 }
